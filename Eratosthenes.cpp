@@ -10,13 +10,15 @@ void nArray(std::vector<int>& n){
 }
 
 int buscaB(std::vector<int> n, int m){
-	std::size_t max = n.size();
-	int i = max / 2;
-	while(n[i] != m){
-		if(n[i] > m){
-			
-		}
+	int max = n.size();
+	int min = 0;
+	int i = (max + min) / 2;
+	while(m != n[i]){
+		if(n[i] > m){max = i;}
+		else if(n[i] < m){min = i;}
+		i = (max + min) / 2;
 	}
+	return i;
 }
 
 //Calcular todos os multiplos de um numero x e marcalos, pegar o menor numero depois de x nao marcado e repetir, os numeros q sobram sao primos.
@@ -26,12 +28,12 @@ int main(){
 	std::size_t max = n.size();
 	int i = 0;
 	do{
-		int bool = 1;
+		int buul = 1;
 		int m = n[i];
 		int x = m;
-		while(bool == 1){
+		while(buul == 1){
 			if(m >= max){
-				bool = 0;
+				buul = 0;
 			}
 			else{
 				m = m + x;
