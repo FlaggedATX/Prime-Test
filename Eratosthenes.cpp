@@ -3,7 +3,7 @@
 #include <chrono>
 #include <math.h>
 
-int TAMANHO = 30; //Defines the number up until we want to calculate the primes
+int TAMANHO = 100; //Defines the number up until we want to calculate the primes
 
 
 
@@ -39,12 +39,17 @@ int main(){
 	std::size_t max = n.size();
 	int i = 2;
 	int m = -1;
+	int cont;
 	do{
 		m = i;
 		int x = m;
+		cont = 1;
 		while(m < max){
-			m = m + x;
+			if(cont == 1){m = m * m;} // optimizes a lil, more noticible at higher values
+			else{m = m + x;}
+			//m = m + x;
 			if(m < max){n[m] = 0;}
+			cont = 0;
 		}
 		//std::cout << "Rodando..." << std::endl;
 		m = x;
@@ -56,11 +61,11 @@ int main(){
 	std::cout << "Execution time: " << elapsed.count() << "ms" << std::endl;
 
 	// Optional snippet to see the numbers
-	/*
+	
 	for(int i = 2; i < TAMANHO; i++){
 		if(n[i] == 1){
 			std::cout << i << std::endl;
 		}
 	}
-	 */
+	 
 }
