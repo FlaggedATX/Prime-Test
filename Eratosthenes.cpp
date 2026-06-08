@@ -1,10 +1,9 @@
 #include <iostream>
 #include <vector>
-#include <algorithm>
 #include <chrono>
 #include <math.h>
 
-int TAMANHO = 1000000; //Defines the number up until we want to calculate the primes
+int TAMANHO = 30; //Defines the number up until we want to calculate the primes
 
 
 
@@ -43,14 +42,12 @@ int main(){
 	do{
 		m = i;
 		int x = m;
-		if(i >= 2){
-			while(m < max){
-				m = m + x;
-				if(m < max){n[m] = 0;}
-			}
+		while(m < max){
+			m = m + x;
+			if(m < max){n[m] = 0;}
 		}
-		m = x;
 		//std::cout << "Rodando..." << std::endl;
+		m = x;
 		i++;
 	}while(m < sqrt(max));
 
@@ -58,11 +55,12 @@ int main(){
 	std::chrono::duration<double, std::milli> elapsed = end - start;
 	std::cout << "Execution time: " << elapsed.count() << "ms" << std::endl;
 
-	/* Optional snippet to see the numbers
+	// Optional snippet to see the numbers
+	/*
 	for(int i = 2; i < TAMANHO; i++){
 		if(n[i] == 1){
 			std::cout << i << std::endl;
 		}
 	}
-	*/ 
+	 */
 }
