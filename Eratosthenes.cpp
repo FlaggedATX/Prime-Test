@@ -26,11 +26,12 @@ int main(){
 	int m;
 	float sq = sqrt(max);
 	do{
-		m = i;
-		m = m * m;
-		while(m < max){
-			n[m] = 0;
-			m = m + i;
+		if(n[i] != 0){        // só processa se i ainda é primo
+			m = i * i;
+			while(m < max){
+				n[m] = 0;
+				m = m + i;
+			}
 		}
 		i++;
 	}while(i < sq);
@@ -39,11 +40,11 @@ int main(){
 	std::cout << "Execution time: " << elapsed.count() << "ms" << std::endl;
 
 	// Optional snippet to see the numbers
-	/*
+	
 	for(int i = 2; i < TAMANHO; i++){
 		if(n[i] == 1){
 			std::cout << i << std::endl;
 		}
 	}
-	*/
+	
 }
